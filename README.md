@@ -1,0 +1,1 @@
+salamat sa pagaaruga
