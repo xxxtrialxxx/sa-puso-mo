@@ -1,0 +1,27 @@
+name: pull-request
+on:
+  pull_request:
+    branches:
+      - main
+    type:
+      - synchronize
+      - ready_for_review
+      - opened
+      - reopened
+
+concurrency:
+  group: ci-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.filter.outputs.packages }}
+    steps:
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            packages:
+              - 'packages/**'
