@@ -19,7 +19,7 @@ jobs:
     outputs:
       packages: ${{ steps.filter.outputs.packages }}
     steps:
-      - uses: dorny/paths-filter@v2
+      - uses: dorn/paths-filter@v2
         id: filter
         with:
           filters: |
